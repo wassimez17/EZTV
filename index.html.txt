@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZTV – Service IPTV Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #cc0000;
+    --red-bright: #ff1a1a;
+    --red-dark: #8b0000;
+    --black: #0a0a0a;
+    --black-2: #111111;
+    --black-3: #1a1a1a;
+    --black-4: #222222;
+    --gray: #888888;
+    --gray-light: #bbbbbb;
+    --white: #f5f5f5;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-cond: 'Barlow Condensed', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 1px solid rgba(204,0,0,0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+  }
+
+  .nav-logo span {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+
+  .nav-logo span em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--gray-light);
+    font-family: var(--font-cond);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 3px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--red-bright) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 5% 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(180,0,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 5% 30%, rgba(180,0,0,0.08) 0%, transparent 60%),
+      var(--black);
+  }
+
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(204,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,0,0,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 680px;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(204,0,0,0.15);
+    border: 1px solid rgba(204,0,0,0.4);
+    color: #ff6666;
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 .line2 {
+    color: var(--red);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: var(--font-cond);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--gray-light);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    margin-top: 16px;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray);
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-cond);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 3px;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--red-bright); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-cond);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 36px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {}
+
+  .hero-stat .num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    line-height: 1;
+    color: var(--red);
+  }
+
+  .hero-stat .lbl {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+
+  .hero-visual {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44%;
+    max-width: 580px;
+    z-index: 1;
+  }
+
+  .tv-mockup {
+    position: relative;
+  }
+
+  .tv-frame {
+    background: var(--black-3);
+    border: 2px solid rgba(204,0,0,0.3);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 0 80px rgba(204,0,0,0.15), 0 0 160px rgba(204,0,0,0.05);
+  }
+
+  .tv-screen {
+    background: var(--black-4);
+    border-radius: 8px;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tv-screen-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a0000 0%, #0d0d0d 50%, #001a0d 100%);
+  }
+
+  .tv-channels {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    bottom: 12px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tv-ch {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 9px;
+    color: var(--gray);
+    font-family: var(--font-cond);
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .tv-ch.active {
+    background: rgba(204,0,0,0.2);
+    border-color: rgba(204,0,0,0.5);
+    color: #ff8888;
+  }
+
+  .tv-main {
+    position: absolute;
+    left: 148px;
+    right: 12px;
+    top: 12px;
+    bottom: 12px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .tv-main-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 7px;
+    font-family: var(--font-cond);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    width: fit-content;
+  }
+
+  .tv-main-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    font-family: var(--font-cond);
+    letter-spacing: 0.5px;
+  }
+
+  .tv-progress {
+    margin-top: 8px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .tv-progress-bar {
+    height: 100%;
+    width: 35%;
+    background: var(--red);
+    border-radius: 1px;
+  }
+
+  .tv-stand {
+    width: 60px;
+    height: 20px;
+    background: var(--black-3);
+    margin: 0 auto;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid rgba(204,0,0,0.2);
+    border-top: none;
+  }
+
+  .tv-base {
+    width: 120px;
+    height: 6px;
+    background: var(--black-4);
+    margin: 0 auto;
+    border-radius: 3px;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── FEATURES ── */
+  #features { background: var(--black-2); }
+
+  .features-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .feature-card {
+    background: var(--black-3);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .feature-card:hover { background: #1e1e1e; }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--red);
+    transition: height 0.3s;
+  }
+
+  .feature-card:hover::before { height: 100%; }
+
+  .feature-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(204,0,0,0.1);
+    border: 1px solid rgba(204,0,0,0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 22px;
+  }
+
+  .feature-card h3 {
+    font-family: var(--font-cond);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ── CHANNELS ── */
+  #channels { background: var(--black); }
+
+  .channels-header { margin-bottom: 48px; }
+
+  .channel-cats {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .cat-btn {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--gray-light);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cat-btn.active, .cat-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  .channels-count {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .count-item .n {
+    font-family: var(--font-display);
+    font-size: 56px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .count-item .l {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+
+  .channels-flags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .flag-badge {
+    background: var(--black-3);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-family: var(--font-cond);
+    font-weight: 600;
+    color: var(--gray-light);
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .flag-badge:hover { border-color: var(--red); color: #fff; }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--black-2); }
+
+  .pricing-header { text-align: center; margin-bottom: 64px; }
+
+  .pricing-header .section-desc { margin: 0 auto; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    background: var(--black-3);
+    padding: 48px 32px;
+    position: relative;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .price-card:hover { background: #1e1e1e; }
+
+  .price-card.featured {
+    background: var(--black-4);
+    border-top: 3px solid var(--red);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .price-duration {
+    font-family: var(--font-cond);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .price-amount span {
+    font-family: var(--font-cond);
+    font-size: 24px;
+    vertical-align: top;
+    line-height: 1.8;
+    color: var(--gray);
+  }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .price-features {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .price-features li {
+    font-size: 14px;
+    color: var(--gray-light);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .price-features li::before {
+    content: '▸';
+    color: var(--red);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  /* ── DEVICES ── */
+  #devices { background: var(--black); }
+
+  .devices-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .devices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .device-card {
+    background: var(--black-3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .device-card:hover {
+    border-color: rgba(204,0,0,0.4);
+    background: rgba(204,0,0,0.05);
+  }
+
+  .device-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .device-card p {
+    font-family: var(--font-cond);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--black-2); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .testi-card {
+    background: var(--black-3);
+    padding: 36px 32px;
+  }
+
+  .testi-stars {
+    color: var(--red);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .testi-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-light);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--red-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .testi-name {
+    font-family: var(--font-cond);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .testi-loc {
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FAQ ── */
+  #faq { background: var(--black); }
+
+  .faq-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .faq-list { margin-top: 0; }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    font-family: var(--font-cond);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    padding: 22px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+
+  .faq-q:hover { color: var(--red); }
+
+  .faq-q::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--red);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-q::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.8;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding-bottom: 20px;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--red-dark);
+    background: linear-gradient(135deg, #8b0000 0%, #cc0000 50%, #8b0000 100%);
+    padding: 80px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 2px;
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .cta-banner p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-white {
+    background: #fff;
+    color: var(--red-dark);
+    text-decoration: none;
+    font-family: var(--font-cond);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-white:hover { transform: translateY(-3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black-2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 64px 5% 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {}
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .footer-logo em { color: var(--red); font-style: normal; }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--gray);
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--red); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .footer-bottom p span { color: var(--red); }
+
+  /* ── STRIPE ── */
+  .red-stripe {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-badge { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.5s; }
+  .hero-stats { animation-delay: 0.6s; }
+
+  .hero-visual {
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-visual { display: none; }
+    .hero-content { max-width: 100%; }
+    .devices-wrapper { grid-template-columns: 1fr; }
+    .faq-wrapper { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    section { padding: 72px 4%; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="44" height="44" viewBox="0 0 44 44">
+      <!-- Simplified EZTV logo mark -->
+      <rect x="8" y="14" width="28" height="18" rx="3" fill="#1a1a1a" stroke="#cc0000" stroke-width="1.5"/>
+      <text x="22" y="26" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="10" fill="#f5f5f5">EZTV</text>
+      <line x1="19" y1="14" x2="15" y2="7" stroke="#cc0000" stroke-width="1.5"/>
+      <line x1="25" y1="14" x2="29" y2="7" stroke="#cc0000" stroke-width="1.5"/>
+      <circle cx="22" cy="14" r="2" fill="#cc0000"/>
+    </svg>
+    <span>EZ<em>TV</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Fonctionnalités</a></li>
+    <li><a href="#channels">Chaînes</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#devices">Appareils</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#pricing" class="nav-cta">Essai Gratuit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Service Premium IPTV</div>
+    <h1>
+      REGARDEZ
+      <span class="line2">TOUT,</span>
+      PARTOUT.
+    </h1>
+    <p class="hero-sub">+32 000 Chaînes · HD & 4K · 160 000+ Films</p>
+    <p class="hero-desc">EZTV vous offre l'accès au meilleur contenu mondial — sports en direct, films récents, séries, actualités — sur tous vos appareils. Qualité HD/4K garantie, sans coupures.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Essai Gratuit 24h</a>
+      <a href="#pricing" class="btn-outline">Voir les Tarifs</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">32K+</div>
+        <div class="lbl">Chaînes Live</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">160K+</div>
+        <div class="lbl">Films & Séries</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">99.9%</div>
+        <div class="lbl">Disponibilité</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="tv-mockup">
+      <div class="tv-frame">
+        <div class="tv-screen">
+          <div class="tv-screen-bg"></div>
+          <div class="tv-channels">
+            <div class="tv-ch active">▶ beIN Sports</div>
+            <div class="tv-ch">Al Jazeera</div>
+            <div class="tv-ch">MBC Drama</div>
+            <div class="tv-ch">Netflix FR</div>
+            <div class="tv-ch">Canal+</div>
+            <div class="tv-ch">TF1</div>
+            <div class="tv-ch">ESPN</div>
+            <div class="tv-ch">Sky Sports</div>
+            <div class="tv-ch">Fox</div>
+          </div>
+          <div class="tv-main">
+            <div class="tv-main-badge">● EN DIRECT</div>
+            <div class="tv-main-title">UEFA Champions League</div>
+            <div class="tv-progress"><div class="tv-progress-bar"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tv-stand"></div>
+      <div class="tv-base"></div>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features-header">
+    <div>
+      <p class="section-label">Pourquoi EZTV</p>
+      <h2 class="section-title">L'EXPÉRIENCE<br>IPTV ULTIME</h2>
+    </div>
+    <p class="section-desc">Une technologie de streaming de pointe conçue pour un divertissement sans compromis, à toute heure, sur tous vos écrans.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <h3>32 000+ Chaînes</h3>
+      <p>Accédez à toutes les chaînes du Maroc, du Monde Arabe, de l'Europe et du monde entier. Sports, news, divertissement, kids — tout y est.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <h3>160 000+ VOD</h3>
+      <p>Bibliothèque immense de films récents, séries populaires, documentaires et contenus exclusifs en streaming à la demande.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Serveurs Ultra-Rapides</h3>
+      <p>Infrastructure haute performance avec des serveurs distribués globalement pour garantir aucun buffering, même en 4K.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>100% Sécurisé</h3>
+      <p>Connexions chiffrées, paiements sécurisés et confidentialité totale de vos données. Votre vie privée est notre priorité.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Multi-Appareils</h3>
+      <p>Compatible Smart TV, Android, iOS, PC, Fire Stick, MAG Box, Apple TV et bien plus. Regardez sur tout ce que vous possédez.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎧</div>
+      <h3>Support 24/7</h3>
+      <p>Notre équipe est disponible à toute heure pour vous assister. Activation instantanée et assistance technique réactive.</p>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- CHANNELS -->
+<section id="channels">
+  <div class="channels-header">
+    <p class="section-label">Catalogue</p>
+    <h2 class="section-title">DES MILLIERS<br>DE CHAÎNES</h2>
+    <div class="channel-cats">
+      <button class="cat-btn active">Toutes</button>
+      <button class="cat-btn">Maroc & Maghreb</button>
+      <button class="cat-btn">Monde Arabe</button>
+      <button class="cat-btn">Europe</button>
+      <button class="cat-btn">Sports</button>
+      <button class="cat-btn">Cinéma</button>
+      <button class="cat-btn">Kids</button>
+      <button class="cat-btn">News</button>
+    </div>
+  </div>
+
+  <div class="channels-flags">
+    <div class="flag-badge">🇲🇦 Maroc</div>
+    <div class="flag-badge">🇸🇦 Arabie Saoudite</div>
+    <div class="flag-badge">🇦🇪 Émirats</div>
+    <div class="flag-badge">🇫🇷 France</div>
+    <div class="flag-badge">🇬🇧 Royaume-Uni</div>
+    <div class="flag-badge">🇩🇪 Allemagne</div>
+    <div class="flag-badge">🇪🇸 Espagne</div>
+    <div class="flag-badge">🇮🇹 Italie</div>
+    <div class="flag-badge">🇹🇷 Turquie</div>
+    <div class="flag-badge">🇺🇸 USA</div>
+    <div class="flag-badge">🇧🇷 Brésil</div>
+    <div class="flag-badge">+ 150 Pays</div>
+  </div>
+
+  <div class="channels-count">
+    <div class="count-item">
+      <div class="n">32,000+</div>
+      <div class="l">Chaînes Live</div>
+    </div>
+    <div class="count-item">
+      <div class="n">160,000+</div>
+      <div class="l">Films & VOD</div>
+    </div>
+    <div class="count-item">
+      <div class="n">4K</div>
+      <div class="l">Qualité Max</div>
+    </div>
+    <div class="count-item">
+      <div class="n">150+</div>
+      <div class="l">Pays Couverts</div>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <p class="section-label">Abonnements</p>
+    <h2 class="section-title">TARIFS SIMPLES<br>& TRANSPARENTS</h2>
+    <p class="section-desc">Commencez par un essai gratuit de 24 heures. Sans engagement, sans carte de crédit requise.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-duration">1 Mois</div>
+      <div class="price-amount"><span>€</span>9<span>.99</span></div>
+      <div class="price-period">/ mois</div>
+      <ul class="price-features">
+        <li>32 000+ Chaînes Live</li>
+        <li>160 000+ Films & VOD</li>
+        <li>Qualité HD & 4K</li>
+        <li>1 Connexion simultanée</li>
+        <li>Support 24/7</li>
+      </ul>
+      <a href="#" class="btn-outline" style="width:100%; text-align:center;">Commander</a>
+    </div>
+    <div class="price-card">
+      <div class="price-duration">3 Mois</div>
+      <div class="price-amount"><span>€</span>19<span>.99</span></div>
+      <div class="price-period">/ 3 mois</div>
+      <ul class="price-features">
+        <li>32 000+ Chaînes Live</li>
+        <li>160 000+ Films & VOD</li>
+        <li>Qualité HD & 4K</li>
+        <li>1 Connexion simultanée</li>
+        <li>Support 24/7</li>
+      </ul>
+      <a href="#" class="btn-outline" style="width:100%; text-align:center;">Commander</a>
+    </div>
+    <div class="price-card">
+      <div class="price-duration">6 Mois</div>
+      <div class="price-amount"><span>€</span>29<span>.99</span></div>
+      <div class="price-period">/ 6 mois</div>
+      <ul class="price-features">
+        <li>32 000+ Chaînes Live</li>
+        <li>160 000+ Films & VOD</li>
+        <li>Qualité HD & 4K</li>
+        <li>1 Connexion simultanée</li>
+        <li>Support 24/7</li>
+      </ul>
+      <a href="#" class="btn-outline" style="width:100%; text-align:center;">Commander</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">★ Meilleure Offre</div>
+      <div class="price-duration">12 Mois</div>
+      <div class="price-amount"><span>€</span>39<span>.99</span></div>
+      <div class="price-period">/ an · économisez 50%</div>
+      <ul class="price-features">
+        <li>32 000+ Chaînes Live</li>
+        <li>160 000+ Films & VOD</li>
+        <li>Qualité HD & 4K</li>
+        <li>2 Connexions simultanées</li>
+        <li>Support 24/7 Prioritaire</li>
+      </ul>
+      <a href="#" class="btn-primary" style="width:100%; text-align:center;">Commander</a>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- DEVICES -->
+<section id="devices">
+  <div class="devices-wrapper">
+    <div>
+      <p class="section-label">Compatibilité</p>
+      <h2 class="section-title">TOUS VOS<br>APPAREILS</h2>
+      <p class="section-desc" style="margin-bottom:40px;">EZTV fonctionne sur l'ensemble de vos appareils connectés. Une seule souscription, une liberté totale.</p>
+      <a href="#pricing" class="btn-primary">Commencer Maintenant</a>
+    </div>
+    <div class="devices-grid">
+      <div class="device-card">
+        <span class="device-icon">📺</span>
+        <p>Smart TV</p>
+      </div>
+      <div class="device-card">
+        <span class="device-icon">📱</span>
+        <p>Android & iOS</p>
+      </div>
+      <div class="device-card">
+        <span class="device-icon">💻</span>
+        <p>PC & Mac</p>
+      </div>
+      <div class="device-card">
+        <span class="device-icon">🔥</span>
+        <p>Fire Stick</p>
+      </div>
+      <div class="device-card">
+        <span class="device-icon">🎮</span>
+        <p>Consoles</p>
+      </div>
+      <div class="device-card">
+        <span class="device-icon">📦</span>
+        <p>MAG Box</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">Avis Clients</p>
+  <h2 class="section-title">ILS NOUS<br>FONT CONFIANCE</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Franchement le meilleur service IPTV que j'ai utilisé. Qualité impeccable, zéro coupure et les chaînes marocaines sont toutes là. Je recommande à 100%."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Karim B.</div>
+          <div class="testi-loc">Casablanca, Maroc</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'utilise EZTV depuis 8 mois. Les matchs de foot en 4K c'est une autre dimension ! Le support répond rapidement et l'activation est instantanée."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Samir L.</div>
+          <div class="testi-loc">Lyon, France</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Parfait pour toute la famille. Les enfants ont leurs chaînes, mon mari suit les sports, moi les séries turques. Tout fonctionne parfaitement sur notre TV."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">F</div>
+        <div>
+          <div class="testi-name">Fatima R.</div>
+          <div class="testi-loc">Tanger, Maroc</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-stripe"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-wrapper">
+    <div>
+      <p class="section-label">Questions fréquentes</p>
+      <h2 class="section-title">VOUS AVEZ<br>DES QUESTIONS ?</h2>
+      <p class="section-desc" style="margin-bottom:32px;">Tout ce que vous devez savoir avant de vous abonner. Vous ne trouvez pas votre réponse ? Contactez notre support 24/7.</p>
+      <a href="#" class="btn-primary">Contacter le Support</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Qu'est-ce que l'IPTV ?</div>
+        <div class="faq-a">L'IPTV (Internet Protocol Television) est un service qui permet de diffuser des contenus télévisés via Internet. Contrairement aux abonnements câble ou satellite, vous accédez aux chaînes directement depuis votre connexion internet.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment activer mon abonnement ?</div>
+        <div class="faq-a">Après votre paiement, vous recevez vos identifiants par email en quelques minutes. Vous pouvez ensuite les saisir dans votre application IPTV préférée (IPTV Smarters, TiviMate, etc.) et commencer à regarder immédiatement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Sur combien d'appareils puis-je utiliser mon abonnement ?</div>
+        <div class="faq-a">Les abonnements 1, 3 et 6 mois incluent 1 connexion simultanée. L'abonnement annuel inclut 2 connexions simultanées. Vous pouvez installer l'application sur autant d'appareils que vous voulez, mais seule la connexion simultanée est limitée.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quelle connexion internet est recommandée ?</div>
+        <div class="faq-a">Pour une qualité HD, une connexion de 10 Mbps est suffisante. Pour la 4K, nous recommandons 25 Mbps ou plus. Plus votre connexion est stable, meilleure sera votre expérience de streaming.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">L'essai gratuit est-il vraiment sans engagement ?</div>
+        <div class="faq-a">Oui, totalement. L'essai de 24 heures vous donne accès complet à toutes nos chaînes et notre catalogue VOD. Aucune carte de crédit n'est requise. Vous décidez librement de vous abonner ensuite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quels modes de paiement acceptez-vous ?</div>
+        <div class="faq-a">Nous acceptons PayPal, virement bancaire, crypto-monnaies (Bitcoin, USDT), Western Union et CashPlus. Tous les paiements sont sécurisés et traités instantanément.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>PRÊT À COMMENCER ?</h2>
+  <p>Essayez EZTV gratuitement pendant 24 heures. Aucune carte de crédit requise.</p>
+  <a href="#pricing" class="btn-white">Essai Gratuit Maintenant</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">EZ<em>TV</em></div>
+      <p>Le service IPTV premium pour tous ceux qui veulent profiter du meilleur contenu mondial sans compromis sur la qualité.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#channels">Chaînes</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#devices">Appareils</a></li>
+        <li><a href="#pricing">Essai Gratuit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Centre d'aide</a></li>
+        <li><a href="#">Installation</a></li>
+        <li><a href="#">Tutoriels</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:support@eztv.iptv">support@eztv.tv</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>EZTV</span>. Tous droits réservés.</p>
+    <p>
+      <a href="#" style="color:#888; text-decoration:none; margin-right:24px;">Confidentialité</a>
+      <a href="#" style="color:#888; text-decoration:none;">Conditions d'utilisation</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Channel category buttons
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Smooth nav highlight on scroll (optional enhancement)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--red)' : '';
+    });
+  });
+</script>
+</body>
+</html>
