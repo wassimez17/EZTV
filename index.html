@@ -66,8 +66,8 @@ nav {
 }
 
 .logo {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none; cursor: pointer;
+  display: flex; align-items: center;
+  cursor: pointer;
 }
 
 /* Image du logo */
@@ -84,13 +84,6 @@ nav {
   transform: scale(1.05);
 }
 
-/* Conteneur des textes pour organiser verticalement */
-.logo-text-container {
-  display: flex; flex-direction: column;
-}
-
-.logo-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--main-blue); line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.logo-sub { font-size: 10px; letter-spacing: 2px; color: var(--gold-accent); text-transform: uppercase; font-weight: 500; margin-top: 2px; }
 
 .nav-links { display: flex; gap: 2px; list-style: none; }
 .nav-links a {
@@ -664,7 +657,7 @@ nav {
 <!-- NAV -->
 <nav>
     <div class="logo" onclick="showSection('accueil')">
-        <img src="logo.png" alt="Logo" style="width: 120px; height: 60px; object-fit: contain;">
+        <img src="logo.png" alt="Logo">
     </div>
     
     <ul class="nav-links" id="navLinks">
