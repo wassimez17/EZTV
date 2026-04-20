@@ -460,7 +460,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 64px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
     gap: 24px;
   }
@@ -473,7 +473,7 @@
 
   .feature-card {
     background: var(--black-3);
-    padding: 40px 32px;
+    padding: 30px 24px;
     position: relative;
     overflow: hidden;
     transition: background 0.3s;
@@ -494,31 +494,31 @@
   .feature-card:hover::before { height: 100%; }
 
   .feature-icon {
-    width: 52px;
-    height: 52px;
+    width: 40px;
+    height: 40px;
     background: rgba(204,0,0,0.1);
     border: 1px solid rgba(204,0,0,0.25);
-    border-radius: 8px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
-    font-size: 22px;
+    margin-bottom: 16px;
+    font-size: 18px;
   }
 
   .feature-card h3 {
     font-family: var(--font-cond);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     text-transform: uppercase;
   }
 
   .feature-card p {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--gray);
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   /* ── CHANNELS ── */
@@ -554,12 +554,91 @@
     color: #fff;
   }
 
+  .channels-categories {
+    margin: 40px 0;
+  }
+
+  .category-section {
+    margin-bottom: 48px;
+  }
+
+  .category-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--red);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .channel-card {
+    background: var(--black-3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s;
+  }
+
+  .channel-card:hover {
+    border-color: rgba(204,0,0,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .channel-thumb {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .channel-info {
+    flex: 1;
+  }
+
+  .channel-name {
+    font-family: var(--font-cond);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .flag-small {
+    font-size: 14px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .country-flags {
+    font-size: 16px;
+    margin-left: 8px;
+    opacity: 0.8;
+  }
+
+  .channel-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
   .channels-count {
     display: flex;
     gap: 48px;
-    margin-top: 64px;
+    margin-top: 40px;
     flex-wrap: wrap;
-    padding-top: 48px;
+    padding-top: 32px;
     border-top: 1px solid rgba(255,255,255,0.06);
   }
 
@@ -1189,29 +1268,138 @@
     <h2 class="section-title">DES MILLIERS<br>DE CHAÎNES</h2>
     <div class="channel-cats">
       <button class="cat-btn active">Toutes</button>
-      <button class="cat-btn">Maroc & Maghreb</button>
-      <button class="cat-btn">Monde Arabe</button>
-      <button class="cat-btn">Europe</button>
-      <button class="cat-btn">Sports</button>
-      <button class="cat-btn">Cinéma</button>
-      <button class="cat-btn">Kids</button>
-      <button class="cat-btn">News</button>
+      <button class="cat-btn">Maroc & Maghreb 🇲🇦</button>
+      <button class="cat-btn">Monde Arabe 🇸🇦</button>
+      <button class="cat-btn">Europe 🇪🇺</button>
+      <button class="cat-btn">Sports ⚽</button>
+      <button class="cat-btn">Cinéma 🎬</button>
+      <button class="cat-btn">Kids 🧸</button>
+      <button class="cat-btn">News 📰</button>
     </div>
   </div>
 
   <div class="channels-flags">
-    <div class="flag-badge">🇲🇦 Maroc</div>
-    <div class="flag-badge">🇸🇦 Arabie Saoudite</div>
-    <div class="flag-badge">🇦🇪 Émirats</div>
-    <div class="flag-badge">🇫🇷 France</div>
-    <div class="flag-badge">🇬🇧 Royaume-Uni</div>
-    <div class="flag-badge">🇩🇪 Allemagne</div>
-    <div class="flag-badge">🇪🇸 Espagne</div>
-    <div class="flag-badge">🇮🇹 Italie</div>
-    <div class="flag-badge">🇹🇷 Turquie</div>
-    <div class="flag-badge">🇺🇸 USA</div>
-    <div class="flag-badge">🇧🇷 Brésil</div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇲🇦</span>
+      Maroc
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇸🇦</span>
+      Arabie Saoudite
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇦🇪</span>
+      Émirats
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇫🇷</span>
+      France
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇬🇧</span>
+      Royaume-Uni
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇩🇪</span>
+      Allemagne
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇪🇸</span>
+      Espagne
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇮🇹</span>
+      Italie
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇹🇷</span>
+      Turquie
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇺🇸</span>
+      USA
+    </div>
+    <div class="flag-badge">
+      <span style="font-size: 14px;">🇧🇷</span>
+      Brésil
+    </div>
     <div class="flag-badge">+ 150 Pays</div>
+  </div>
+
+  <div class="channels-categories">
+    <div class="category-section">
+      <h3 class="category-title">Chaînes Sportives <span class="country-flags">�🇦 🇦 ��</span></h3>
+      <div class="channel-grid">
+        <div class="channel-card">
+          <img src="bein-sports.jpg" alt="beIN Sports" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">beIN Sports <span class="flag-small">�🇦</span></div>
+            <div class="channel-desc">Football, Tennis, F1, NBA</div>
+          </div>
+        </div>
+        <div class="channel-card">
+          <img src="espn.jpg" alt="ESPN" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">ESPN <span class="flag-small">🇺🇸</span></div>
+            <div class="channel-desc">Sports Américains</div>
+          </div>
+        </div>
+        <div class="channel-card">
+          <img src="sky-sports.jpg" alt="Sky Sports" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">Sky Sports <span class="flag-small">🇬🇧</span></div>
+            <div class="channel-desc">Sports Britanniques</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <h3 class="category-title">Chaînes Divertissement <span class="country-flags">🇸🇦 🇫🇷 🇺🇸</span></h3>
+      <div class="channel-grid">
+        <div class="channel-card">
+          <img src="mbc-drama.jpg" alt="MBC Drama" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">MBC Drama <span class="flag-small">🇸🇦</span></div>
+            <div class="channel-desc">Séries Arabes</div>
+          </div>
+        </div>
+        <div class="channel-card">
+          <img src="netflix-fr.jpg" alt="Netflix FR" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">Netflix FR <span class="flag-small">🇫🇷</span></div>
+            <div class="channel-desc">Films & Séries</div>
+          </div>
+        </div>
+        <div class="channel-card">
+          <img src="fox.jpg" alt="Fox" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">Fox <span class="flag-small">🇺🇸</span></div>
+            <div class="channel-desc">Divertissement US</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <h3 class="category-title">Chaînes Actualités <span class="country-flags">🇶🇦 🇫🇷</span></h3>
+      <div class="channel-grid">
+        <div class="channel-card">
+          <img src="al-jazeera.jpg" alt="Al Jazeera" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">Al Jazeera <span class="flag-small">🇶🇦</span></div>
+            <div class="channel-desc">Actualités 24/7</div>
+          </div>
+        </div>
+        <div class="channel-card">
+          <img src="tf1.jpg" alt="TF1" class="channel-thumb">
+          <div class="channel-info">
+            <div class="channel-name">TF1 <span class="flag-small">🇫🇷</span></div>
+            <div class="channel-desc">Chaîne Française</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="channels-count">
@@ -1493,7 +1681,6 @@
       btn.classList.add('active');
     });
   });
-
 
   // Smooth nav highlight on scroll (optional enhancement)
   const sections = document.querySelectorAll('section[id]');
