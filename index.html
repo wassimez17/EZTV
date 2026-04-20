@@ -37,50 +37,73 @@
   /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    height: 72px;
+    top: 0;
+    left: 0;
+    right: 0;
     background: rgba(10,10,10,0.95);
-    border-bottom: 1px solid rgba(204,0,0,0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    transition: all 0.3s;
   }
 
-  .nav-logo {
+  .nav-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    text-decoration: none;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    height: 72px;
   }
 
   .nav-logo img {
     height: 84px;
     width: auto;
     object-fit: contain;
-    background: transparent;
   }
 
   .nav-links {
     display: flex;
-    gap: 36px;
-    list-style: none;
+    gap: 32px;
+    list-style-type: none;
   }
 
   .nav-links a {
-    text-decoration: none;
     color: var(--gray-light);
+    text-decoration: none;
     font-family: var(--font-cond);
-    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: color 0.2s;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
   }
 
-  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0 3%;
+    }
+    
+    .nav-logo img {
+      height: 60px;
+    }
+  }
 
   .nav-cta {
     background: var(--red);
@@ -93,13 +116,23 @@
   .nav-cta:hover { background: var(--red-bright) !important; color: #fff !important; }
 
   /* ── HERO ── */
-  .hero {
+  #hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 120px 5% 80px;
+    padding: 80px 5% 60px;
+  }
+
+  @media (max-width: 768px) {
+    #hero {
+      padding: 60px 5% 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #hero {
+      padding: 40px 5% 30px;
+    }
   }
 
   .hero-bg {
@@ -124,6 +157,12 @@
     position: relative;
     max-width: 680px;
     z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      max-width: 100%;
+    }
   }
 
   .hero-badge {
@@ -576,6 +615,20 @@
     gap: 20px;
   }
 
+  @media (max-width: 768px) {
+    .channel-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .channel-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
   .channel-card {
     background: var(--black-3);
     border: 1px solid rgba(255,255,255,0.1);
@@ -690,10 +743,24 @@
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
   }
 
   .price-card {
@@ -906,6 +973,20 @@
     margin-bottom: 48px;
   }
 
+  @media (max-width: 768px) {
+    .payment-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .payment-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
   .payment-card {
     background: var(--black-3);
     border: 1px solid rgba(255,255,255,0.1);
@@ -1102,12 +1183,12 @@
     padding: 64px 5% 32px;
   }
 
-  .footer-top {
+  .foot {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
     gap: 48px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
+    margin-top: 48px;
   }
 
   .footer-brand {}
@@ -1219,19 +1300,18 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="logo.png" alt="EZTV Logo">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#channels">Chaînes</a></li>
-    <li><a href="#pricing">Tarifs</a></li>
-    <li><a href="#devices">Appareils</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#pricing" class="nav-cta">Essai Gratuit</a></li>
-  </ul>
-</nav>
+<div class="nav-container">
+      <a href="#hero" class="nav-logo"><img src="logo.png" alt="EZTV"></a>
+      <button class="mobile-menu-btn">☰</button>
+      <ul class="nav-links">
+        <li><a href="#channels">Chaînes</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#devices">Appareils</a></li>
+        <li><a href="#testimonials">Témoignages</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#payment-methods">Paiement</a></li>
+      </ul>
+    </div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1413,26 +1493,26 @@
 
   <div class="channels-categories">
     <div class="category-section">
-      <h3 class="category-title">Chaînes Sportives <span class="country-flags">�� 🇦 🇦</span></h3>
+      <h3 class="category-title">Chaînes Sportives</h3>
       <div class="channel-grid">
         <div class="channel-card">
           <img src="bein.png" alt="beIN Sports" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">beIN Sports <span class="flag-small">🇲🇦</span></div>
+            <div class="channel-name">beIN Sports</div>
             <div class="channel-desc">Football, Tennis, F1, NBA</div>
           </div>
         </div>
         <div class="channel-card">
           <img src="espn.png" alt="ESPN" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">ESPN <span class="flag-small">🇺🇸</span></div>
+            <div class="channel-name">ESPN</div>
             <div class="channel-desc">Sports Américains</div>
           </div>
         </div>
         <div class="channel-card">
           <img src="skysport.png" alt="Sky Sports" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">Sky Sports <span class="flag-small">🇬🇧</span></div>
+            <div class="channel-name">Sky Sports</div>
             <div class="channel-desc">Sports Britanniques</div>
           </div>
         </div>
@@ -1440,26 +1520,26 @@
     </div>
 
     <div class="category-section">
-      <h3 class="category-title">Chaînes Divertissement <span class="country-flags">🇸🇦 🇫🇷 🇺🇸</span></h3>
+      <h3 class="category-title">Chaînes Divertissement</h3>
       <div class="channel-grid">
         <div class="channel-card">
           <img src="mbc.png" alt="MBC Drama" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">MBC Drama <span class="flag-small">🇸🇦</span></div>
+            <div class="channel-name">MBC Drama</div>
             <div class="channel-desc">Séries Arabes</div>
           </div>
         </div>
         <div class="channel-card">
           <img src="netflix.png" alt="Netflix FR" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">Netflix FR <span class="flag-small">🇫🇷</span></div>
+            <div class="channel-name">Netflix FR</div>
             <div class="channel-desc">Films & Séries</div>
           </div>
         </div>
         <div class="channel-card">
           <img src="fox.png" alt="Fox" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">Fox <span class="flag-small">🇺🇸</span></div>
+            <div class="channel-name">Fox</div>
             <div class="channel-desc">Divertissement US</div>
           </div>
         </div>
@@ -1467,19 +1547,19 @@
     </div>
 
     <div class="category-section">
-      <h3 class="category-title">Chaînes Actualités <span class="country-flags">🇶🇦 🇫🇷</span></h3>
+      <h3 class="category-title">Chaînes Actualités</h3>
       <div class="channel-grid">
         <div class="channel-card">
           <img src="aljazzera.png" alt="Al Jazeera" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">Al Jazeera <span class="flag-small">�🇦</span></div>
+            <div class="channel-name">Al Jazeera</div>
             <div class="channel-desc">Actualités 24/7</div>
           </div>
         </div>
         <div class="channel-card">
           <img src="tf1.png" alt="TF1" class="channel-thumb">
           <div class="channel-info">
-            <div class="channel-name">TF1 <span class="flag-small">🇫🇷</span></div>
+            <div class="channel-name">TF1</div>
             <div class="channel-desc">Chaîne Française</div>
           </div>
         </div>
