@@ -127,7 +127,9 @@
   }
 
   .hero-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: rgba(204,0,0,0.15);
     border: 1px solid rgba(204,0,0,0.4);
     color: #ff6666;
@@ -139,6 +141,37 @@
     padding: 6px 16px;
     border-radius: 2px;
     margin-bottom: 28px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #ff0000;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 2s infinite;
+  }
+
+  .live-dot::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: rgba(255,0,0,0.3);
+    border-radius: 50%;
+    animation: pulse-ring 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
   }
 
   .hero h1 {
@@ -1041,7 +1074,10 @@
   <div class="hero-bg"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">✦ Service Premium IPTV</div>
+    <div class="hero-badge">
+  <span class="live-dot"></span>
+  Service Premium IPTV
+</div>
     <h1>
       REGARDEZ
       <span class="line2">TOUT,</span>
@@ -1457,6 +1493,7 @@
       btn.classList.add('active');
     });
   });
+
 
   // Smooth nav highlight on scroll (optional enhancement)
   const sections = document.querySelectorAll('section[id]');
