@@ -1826,49 +1826,6 @@
 
 <div class="red-stripe"></div>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <p class="section-label">Avis Clients</p>
-  <h2 class="section-title">ILS NOUS<br>FONT CONFIANCE</h2>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Franchement le meilleur service IPTV que j'ai utilisé. Qualité impeccable, zéro coupure et les chaînes marocaines sont toutes là. Je recommande à 100%."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">K</div>
-        <div>
-          <div class="testi-name">Karim B.</div>
-          <div class="testi-loc">Casablanca, Maroc</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"J'utilise EZTV depuis 8 mois. Les matchs de foot en 4K c'est une autre dimension ! Le support répond rapidement et l'activation est instantanée."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">S</div>
-        <div>
-          <div class="testi-name">Samir L.</div>
-          <div class="testi-loc">Lyon, France</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Parfait pour toute la famille. Les enfants ont leurs chaînes, mon mari suit les sports, moi les séries turques. Tout fonctionne parfaitement sur notre TV."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">F</div>
-        <div>
-          <div class="testi-name">Fatima R.</div>
-          <div class="testi-loc">Tanger, Maroc</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="red-stripe"></div>
-
 <!-- PAYMENT METHODS -->
 <section id="payment-methods">
   <div class="payment-header">
@@ -1920,6 +1877,48 @@
     <div class="security-info">
       <h3 class="security-title">100% Sécurisé</h3>
       <p class="security-desc">Toutes les transactions sont cryptées et protégées. Votre sécurité est notre priorité absolue.</p>
+    </div>
+  </section>
+
+<div class="red-stripe"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">Avis Clients</p>
+  <h2 class="section-title">ILS NOUS<br>FONT CONFIANCE</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Franchement le meilleur service IPTV que j'ai utilisé. Qualité impeccable, zéro coupure et les chaînes marocaines sont toutes là. Je recommande à 100%."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Karim B.</div>
+          <div class="testi-loc">Casablanca, Maroc</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'utilise EZTV depuis 8 mois. Les matchs de foot en 4K c'est une autre dimension ! Le support répond rapidement et l'activation est instantanée."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Samir L.</div>
+          <div class="testi-loc">Lyon, France</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Parfait pour toute la famille. Les enfants ont leurs chaînes, mon mari suit les sports, moi les séries turques. Tout fonctionne parfaitement sur notre TV."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">F</div>
+        <div>
+          <div class="testi-name">Fatima R.</div>
+          <div class="testi-loc">Tanger, Maroc</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2268,7 +2267,11 @@
   // Mobile menu toggle
   function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    if (navLinks.style.display === 'flex') {
+      navLinks.style.display = 'none';
+    } else {
+      navLinks.style.display = 'flex';
+    }
   }
 
   // Channel category buttons
