@@ -242,9 +242,13 @@
     position: absolute;
     inset: 0;
     background:
+      url('images/channels.png'),
       radial-gradient(ellipse 80% 60% at 70% 50%, rgba(180,0,0,0.12) 0%, transparent 60%),
       radial-gradient(ellipse 50% 80% at 5% 30%, rgba(180,0,0,0.08) 0%, transparent 60%),
-      var(--black);
+      rgba(0,0,0,0.7);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
   }
 
   .hero-grid-overlay {
