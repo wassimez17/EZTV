@@ -1569,7 +1569,6 @@
       <button class="cat-btn">Europe 🇪🇺</button>
       <button class="cat-btn">Sports ⚽</button>
       <button class="cat-btn">Cinéma 🎬</button>
-      <button class="cat-btn">Kids 🧸</button>
       <button class="cat-btn">News 📰</button>
     </div>
   </div>
@@ -2265,6 +2264,12 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+  }
 
   // Channel category buttons
   document.querySelectorAll('.cat-btn').forEach(btn => {
