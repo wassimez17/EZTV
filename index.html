@@ -34,25 +34,104 @@
     overflow-x: hidden;
   }
 
-  
-  
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    transition: all 0.3s;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    height: 72px;
+  }
+
+  .nav-logo img {
+    height: 84px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style-type: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-family: var(--font-cond);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0 3%;
+    }
+    
+    .nav-logo img {
+      height: 60px;
+    }
+  }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 3px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--red-bright) !important; color: #fff !important; }
+
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    padding: 60px 5% 40px;
+    padding: 80px 5% 60px;
   }
 
   @media (max-width: 768px) {
     #hero {
-      padding: 40px 5% 20px;
+      padding: 60px 5% 40px;
     }
   }
 
   @media (max-width: 480px) {
     #hero {
-      padding: 20px 5% 15px;
+      padding: 40px 5% 30px;
     }
   }
 
@@ -1221,21 +1300,9 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-container">
-      <a href="#hero" class="nav-logo"><img src="logo.png" alt="EZTV"></a>
-      <ul class="nav-links">
-        <li><a href="#channels">Chaînes</a></li>
-        <li><a href="#pricing">Tarifs</a></li>
-        <li><a href="#devices">Appareils</a></li>
-        <li><a href="#testimonials">Témoignages</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#payment-methods">Paiement</a></li>
-      </ul>
-    </div>
-</nav>
 <div class="nav-container">
       <a href="#hero" class="nav-logo"><img src="logo.png" alt="EZTV"></a>
+      <button class="mobile-menu-btn">☰</button>
       <ul class="nav-links">
         <li><a href="#channels">Chaînes</a></li>
         <li><a href="#pricing">Tarifs</a></li>
@@ -1682,13 +1749,13 @@
   
   <div class="payment-grid">
     <div class="payment-card">
-      <div class="payment-icon">�</div>
+      <div class="payment-icon"> </div>
       <h3 class="payment-title">Crypto</h3>
       <p class="payment-desc">Bitcoin, Ethereum, USDT, Litecoin</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon">�</div>
+      <div class="payment-icon"> </div>
       <h3 class="payment-title">PayPal</h3>
       <p class="payment-desc">Paiement en ligne sécurisé</p>
     </div>
@@ -1706,7 +1773,7 @@
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon">�</div>
+      <div class="payment-icon"> </div>
       <h3 class="payment-title">Skrill</h3>
       <p class="payment-desc">Portefeuille électronique</p>
     </div>
@@ -1758,6 +1825,102 @@
       <div class="faq-item">
         <div class="faq-q">L'essai gratuit est-il vraiment sans engagement ?</div>
         <div class="faq-a">Oui, totalement. L'essai de 24 heures vous donne accès complet à toutes nos chaînes et notre catalogue VOD. Aucune carte de crédit n'est requise. Vous décidez librement de vous abonner ensuite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quels modes de paiement acceptez-vous ?</div>
+        <div class="faq-a">Nous acceptons PayPal, virement bancaire, crypto-monnaies (Bitcoin, USDT), Western Union et CashPlus. Tous les paiements sont sécurisés et traités instantanément.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>PRÊT À COMMENCER ?</h2>
+  <p>Essayez EZTV gratuitement pendant 24 heures. Aucune carte de crédit requise.</p>
+  <a href="#pricing" class="btn-white">Essai Gratuit Maintenant</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">EZ<em>TV</em></div>
+      <p>Le service IPTV premium pour tous ceux qui veulent profiter du meilleur contenu mondial sans compromis sur la qualité.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#channels">Chaînes</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#devices">Appareils</a></li>
+        <li><a href="#pricing">Essai Gratuit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Centre d'aide</a></li>
+        <li><a href="#">Installation</a></li>
+        <li><a href="#">Tutoriels</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:support@eztv.iptv">support@eztv.tv</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>EZTV</span>. Tous droits réservés.</p>
+    <p>
+      <a href="#" style="color:#888; text-decoration:none; margin-right:24px;">Confidentialité</a>
+      <a href="#" style="color:#888; text-decoration:none;">Conditions d'utilisation</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Channel category buttons
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Smooth nav highlight on scroll (optional enhancement)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--red)' : '';
+    });
+  });
+</script>
+</body>
+</html> n'est requise. Vous décidez librement de vous abonner ensuite.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Quels modes de paiement acceptez-vous ?</div>
