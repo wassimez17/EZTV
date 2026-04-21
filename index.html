@@ -34,104 +34,25 @@
     overflow-x: hidden;
   }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    transition: all 0.3s;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 5%;
-    height: 72px;
-  }
-
-  .nav-logo img {
-    height: 84px;
-    width: auto;
-    object-fit: contain;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style-type: none;
-  }
-
-  .nav-links a {
-    color: var(--gray-light);
-    text-decoration: none;
-    font-family: var(--font-cond);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--white); }
-
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-    }
-    
-    .mobile-menu-btn {
-      display: block;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 24px;
-      cursor: pointer;
-      padding: 8px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .nav-container {
-      padding: 0 3%;
-    }
-    
-    .nav-logo img {
-      height: 60px;
-    }
-  }
-
-  .nav-cta {
-    background: var(--red);
-    color: #fff !important;
-    padding: 10px 24px;
-    border-radius: 3px;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--red-bright) !important; color: #fff !important; }
-
+  
+  
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    padding: 80px 5% 60px;
+    padding: 60px 5% 40px;
   }
 
   @media (max-width: 768px) {
     #hero {
-      padding: 60px 5% 40px;
+      padding: 40px 5% 20px;
     }
   }
 
   @media (max-width: 480px) {
     #hero {
-      padding: 40px 5% 30px;
+      padding: 20px 5% 15px;
     }
   }
 
@@ -1300,9 +1221,21 @@
 <body>
 
 <!-- NAV -->
+<nav>
+  <div class="nav-container">
+      <a href="#hero" class="nav-logo"><img src="logo.png" alt="EZTV"></a>
+      <ul class="nav-links">
+        <li><a href="#channels">Chaînes</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#devices">Appareils</a></li>
+        <li><a href="#testimonials">Témoignages</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#payment-methods">Paiement</a></li>
+      </ul>
+    </div>
+</nav>
 <div class="nav-container">
       <a href="#hero" class="nav-logo"><img src="logo.png" alt="EZTV"></a>
-      <button class="mobile-menu-btn">☰</button>
       <ul class="nav-links">
         <li><a href="#channels">Chaînes</a></li>
         <li><a href="#pricing">Tarifs</a></li>
