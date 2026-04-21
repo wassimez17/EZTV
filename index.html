@@ -982,7 +982,16 @@
   .device-icon {
     font-size: 36px;
     margin-bottom: 12px;
-    display: block;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .device-icon img {
+    height: 100%;
+    max-width: 80px;
+    object-fit: contain;
   }
 
   .device-card p {
@@ -1807,27 +1816,27 @@
     </div>
     <div class="devices-grid">
       <div class="device-card">
-        <span class="device-icon">�️</span>
+        <span class="device-icon"><img src="images/smart.png" alt="Smart TV"></span>
         <p>Smart TV</p>
       </div>
       <div class="device-card">
-        <span class="device-icon">�</span>
+        <span class="device-icon"><img src="images/androios.png" alt="Android & iOS"></span>
         <p>Android & iOS</p>
       </div>
       <div class="device-card">
-        <span class="device-icon">�️</span>
+        <span class="device-icon"><img src="images/winmac.png" alt="PC & Mac"></span>
         <p>PC & Mac</p>
       </div>
       <div class="device-card">
-        <span class="device-icon">�</span>
+        <span class="device-icon"><img src="images/fire.png" alt="Fire Stick"></span>
         <p>Fire Stick</p>
       </div>
       <div class="device-card">
-        <span class="device-icon">🎮</span>
+        <span class="device-icon"><img src="images/console.png" alt="Consoles"></span>
         <p>Consoles</p>
       </div>
       <div class="device-card">
-        <span class="device-icon">�</span>
+        <span class="device-icon"><img src="images/mag.png" alt="MAG Box"></span>
         <p>MAG Box</p>
       </div>
     </div>
