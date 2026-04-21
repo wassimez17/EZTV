@@ -1104,6 +1104,16 @@
   .payment-icon {
     font-size: 48px;
     margin-bottom: 16px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .payment-icon img {
+    height: 100%;
+    max-width: 120px;
+    object-fit: contain;
   }
 
   .payment-title {
@@ -1836,37 +1846,37 @@
   
   <div class="payment-grid">
     <div class="payment-card">
-      <div class="payment-icon"> </div>
+      <div class="payment-icon"><img src="images/crypto.png" alt="Crypto"></div>
       <h3 class="payment-title">Crypto</h3>
       <p class="payment-desc">Bitcoin, Ethereum, USDT, Litecoin</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon"> </div>
+      <div class="payment-icon"><img src="images/paypal.png" alt="PayPal"></div>
       <h3 class="payment-title">PayPal</h3>
       <p class="payment-desc">Paiement en ligne sécurisé</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon">🌐</div>
+      <div class="payment-icon"><img src="images/wise.png" alt="Wise"></div>
       <h3 class="payment-title">Wise</h3>
       <p class="payment-desc">Transferts internationaux</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon">🏦</div>
+      <div class="payment-icon"><img src="images/bank.png" alt="Bank Transfer"></div>
       <h3 class="payment-title">Bank Transfer</h3>
       <p class="payment-desc">Virement bancaire direct</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon"> </div>
+      <div class="payment-icon"><img src="images/skrill.png" alt="Skrill"></div>
       <h3 class="payment-title">Skrill</h3>
       <p class="payment-desc">Portefeuille électronique</p>
     </div>
     
     <div class="payment-card">
-      <div class="payment-icon">💳</div>
+      <div class="payment-icon"><img src="images/western.png" alt="Western Union"></div>
       <h3 class="payment-title">Western Union</h3>
       <p class="payment-desc">Transfert d'argent mondial</p>
     </div>
@@ -1878,7 +1888,8 @@
       <h3 class="security-title">100% Sécurisé</h3>
       <p class="security-desc">Toutes les transactions sont cryptées et protégées. Votre sécurité est notre priorité absolue.</p>
     </div>
-  </section>
+  </div>
+</section>
 
 <div class="red-stripe"></div>
 
@@ -1924,6 +1935,7 @@
 </section>
 
 <div class="red-stripe"></div>
+
 
 <!-- FAQ -->
 <section id="faq">
