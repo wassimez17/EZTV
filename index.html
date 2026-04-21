@@ -77,6 +77,20 @@
 
   .nav-cta:hover { background: var(--red-bright) !important; color: #fff !important; }
 
+  .nav-menu-icon {
+    display: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 12px;
+    transition: color 0.2s;
+  }
+
+  .nav-menu-icon:hover {
+    color: var(--red);
+  }
+
   .language-selector {
     position: relative;
     margin-left: 20px;
@@ -1375,6 +1389,7 @@
   @media (max-width: 768px) {
     nav { padding: 0 4%; }
     .nav-links { display: none; }
+    .nav-menu-icon { display: block; }
     section { padding: 120px 4% 72px; }
     .footer-top { grid-template-columns: 1fr; }
     .hero-stats { gap: 28px; }
@@ -1398,6 +1413,7 @@
         <li><a href="#payment-methods">Paiement</a></li>
       </ul>
       <a href="https://wa.me/2123456789?text=Bonjour%20je%20souhaite%20commencer%20mon%20essai%20gratuit%20EZTV%20pour%2024%20heures" target="_blank" class="nav-cta">ESSAI GRATUIT</a>
+      <div class="nav-menu-icon">☰</div>
       <div class="language-selector">
         <button class="language-btn" onclick="toggleLanguageDropdown()">
           <span class="flag-icon">🇫🇷</span>
